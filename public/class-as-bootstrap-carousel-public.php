@@ -96,7 +96,10 @@ class As_Bootstrap_Carousel_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/as-bootstrap-carousel-public.js', array( 'jquery' ), $this->version, false );
+		//wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/as-bootstrap-carousel-public.js', array( 'jquery' ), $this->version, false );
+        
+        wp_enqueue_script( $this->plugin_name.'-jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js', array('jquery'), $this->version, false);
+        wp_enqueue_script( $this->plugin_name.'-bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js', array('jquery'), $this->version, false);
 
 	}
 

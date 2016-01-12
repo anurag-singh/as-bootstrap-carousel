@@ -117,6 +117,7 @@ class As_Bootstrap_Carousel_Admin {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/as-bootstrap-carousel-admin.js', array( 'jquery' ), $this->version, false );
+        
 
 	}
     
@@ -156,7 +157,7 @@ class As_Bootstrap_Carousel_Admin {
             $opts['show_in_nav_menu'] = TRUE;
             $opts['show_ui'] = TRUE;
             $opts['supports'] = array( 'title');
-            $opts['taxonomies'] = array('album');
+            $opts['taxonomies'] = array();
 
             $opts['capabilities']['delete_others_posts'] = "delete_others_{$cap_type}s";
 
@@ -196,9 +197,10 @@ class As_Bootstrap_Carousel_Admin {
         /**
          * Create a new custom taxonomy 'carousel-cat'
          */
-
-        $post_type = strtolower($this->cpt_name);
                 
+        $post_type = strtolower($this->cpt_name);
+        $textdomain = str_replace(' ', '_', strtolower($this->cpt_name));
+        
         $all_taxonomy = $this->taxo_name;
 
         foreach ($all_taxonomy as $single) {
@@ -234,27 +236,27 @@ class As_Bootstrap_Carousel_Admin {
             $opts['capabilities']['edit_terms'] = 'manage_categories';
             $opts['capabilities']['manage_terms'] = 'manage_categories';
 
-            $opts['labels']['add_new_item'] = __( "Add New $single", 'plugin-name' );
-            $opts['labels']['add_or_remove_items'] = __( "Add or remove {$plural}", 'plugin-name' );
-            $opts['labels']['all_items'] = __( $plural, 'plugin-name' );
-            $opts['labels']['choose_from_most_used'] = __( "Choose from most used {$plural}", 'plugin-name' );
-            $opts['labels']['edit_item'] = __( "Edit {$single}" , 'plugin-name');
-            $opts['labels']['menu_name'] = __( $plural, 'plugin-name' );
-            $opts['labels']['name'] = __( $plural, 'plugin-name' );
-            $opts['labels']['new_item_name'] = __( "New {$single} Name", 'plugin-name' );
-            $opts['labels']['not_found'] = __( "No {$plural} Found", 'plugin-name' );
-            $opts['labels']['parent_item'] = __( "Parent {$single}", 'plugin-name' );
-            $opts['labels']['parent_item_colon'] = __( "Parent {$single}:", 'plugin-name' );
-            $opts['labels']['popular_items'] = __( "Popular {$plural}", 'plugin-name' );
-            $opts['labels']['search_items'] = __( "Search {$plural}", 'plugin-name' );
-            $opts['labels']['separate_items_with_commas'] = __( "Separate {$plural} with commas", 'plugin-name' );
-            $opts['labels']['singular_name'] = __( $single, 'plugin-name' );
-            $opts['labels']['update_item'] = __( "Update {$single}", 'plugin-name' );
-            $opts['labels']['view_item'] = __( "View {$single}", 'plugin-name' );
+            $opts['labels']['add_new_item'] = __( "Add New $single", $textdomain );
+            $opts['labels']['add_or_remove_items'] = __( "Add or remove {$plural}", $textdomain );
+            $opts['labels']['all_items'] = __( $plural, $textdomain );
+            $opts['labels']['choose_from_most_used'] = __( "Choose from most used {$plural}", $textdomain );
+            $opts['labels']['edit_item'] = __( "Edit {$single}" , $textdomain);
+            $opts['labels']['menu_name'] = __( $plural, $textdomain );
+            $opts['labels']['name'] = __( $plural, $textdomain );
+            $opts['labels']['new_item_name'] = __( "New {$single} Name", $textdomain );
+            $opts['labels']['not_found'] = __( "No {$plural} Found", $textdomain );
+            $opts['labels']['parent_item'] = __( "Parent {$single}", $textdomain );
+            $opts['labels']['parent_item_colon'] = __( "Parent {$single}:", $textdomain );
+            $opts['labels']['popular_items'] = __( "Popular {$plural}", $textdomain );
+            $opts['labels']['search_items'] = __( "Search {$plural}", $textdomain );
+            $opts['labels']['separate_items_with_commas'] = __( "Separate {$plural} with commas", $textdomain );
+            $opts['labels']['singular_name'] = __( $single, $textdomain );
+            $opts['labels']['update_item'] = __( "Update {$single}", $textdomain );
+            $opts['labels']['view_item'] = __( "View {$single}", $textdomain );
 
             $opts['rewrite']['ep_mask'] = EP_NONE;
             $opts['rewrite']['hierarchical'] = FALSE;
-            $opts['rewrite']['slug'] = __( $tax_slug, 'plugin-name' );
+            $opts['rewrite']['slug'] = __( $tax_slug, $textdomain );
             $opts['rewrite']['with_front'] = FALSE;
 
             register_taxonomy( $tax_slug, $post_type, $opts );

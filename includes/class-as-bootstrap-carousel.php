@@ -90,7 +90,7 @@ class As_Bootstrap_Carousel {
 		$this->plugin_name = 'as-bootstrap-carousel';
 		$this->version = '1.0.0';
         $this->cpt_name = 'Carousel';               // Add CPT name
-        $this->taxo_name = array('album');          // Add taxonomy names in array
+        $this->taxo_name = array('Category');          // Add taxonomy names in array
 
 		$this->load_dependencies();
 		$this->set_locale();

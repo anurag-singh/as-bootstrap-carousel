@@ -15,6 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       AS Bootstrap Carousel
  * Plugin URI:        http://www.anuragsingh.me/wp/plugins
+ * Plugin Type:       Piklist
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
  * Version:           1.0.0
  * Author:            Anurag Singh
